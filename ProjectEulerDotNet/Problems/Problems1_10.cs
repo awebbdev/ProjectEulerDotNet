@@ -6,6 +6,11 @@ namespace ProjectEulerDotNet.Problems
 {
     public class Problems1_10
     {
+        /// <summary>
+        /// Multiples of 3 and 5
+        /// </summary>
+        /// <param name="limit">The set max integer limit</param>
+        /// <returns>The sum of all natural numbers that are the multiples of 3 or 5 to the limit</returns>
         public int Problem1 (int limit)
         {
             List<int> mults = new List<int>();
@@ -14,16 +19,16 @@ namespace ProjectEulerDotNet.Problems
             {
                 if(i%3 == 0 || i%5 == 0)
                 {
-                    mults.Add(i);
+                    answer += i;
                 }
-            }
-            foreach(int m in mults)
-            {
-                answer += m;
             }
             return answer;
         }
-
+        /// <summary>
+        /// Even Fibonacci numbers
+        /// </summary>
+        /// <param name="limit">Maximum fibonacci number to evaluate</param>
+        /// <returns>The sum of even valued fibonacci numbers</returns>
         public long Problem2(long limit)
         {
             long answer = 0;
@@ -39,7 +44,11 @@ namespace ProjectEulerDotNet.Problems
             }
             return answer;
         }
-
+        /// <summary>
+        /// Largest prime factor
+        /// </summary>
+        /// <param name="num">Number to evaluate</param>
+        /// <returns>The largest prime factor of the provided number</returns>
         public long Problem3(long num)
         {
             List<long> primes = new List<long>();
@@ -62,7 +71,11 @@ namespace ProjectEulerDotNet.Problems
             }
             return primes[primes.Count - 1];
         }
-
+        /// <summary>
+        /// Recursive Fibonacci sequence
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         private long Fibonacci(long num)
         {
             if ((num == 0) || (num == 1))
