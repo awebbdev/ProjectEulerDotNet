@@ -16,7 +16,7 @@ namespace ProjectEulerDotNet.UnitTests
             }
 
             [Test]
-            public void Problem1()
+            public void Find_Sum_Of_Three_Five_Multi_For_10 ()
             {
                 var result = _problem1_10.Problem1(10);
                 Assert.AreEqual(23, result);
@@ -34,6 +34,30 @@ namespace ProjectEulerDotNet.UnitTests
             {
                 var result = _problem1_10.Problem3(13195);
                 Assert.AreEqual(29, result);
+            }
+            [Test]
+            public void Problem4()
+            {
+                var result = _problem1_10.Problem4(2);
+                Assert.AreEqual(9009, result);
+            }
+            [Test]
+            public void Problem5()
+            {
+                var result = _problem1_10.Problem5(10);
+                Assert.AreEqual(2520, result);
+            }
+            [Test]
+            public void Problem6()
+            {
+                var result = _problem1_10.Problem6(10);
+                Assert.AreEqual(2640, result);
+            }
+            [Test]
+            public void Problem7()
+            {
+                var result = _problem1_10.Problem7(6);
+                Assert.AreEqual(13, result);
             }
         }
     }

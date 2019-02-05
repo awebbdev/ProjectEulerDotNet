@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectEulerDotNet.Problems
@@ -72,6 +73,101 @@ namespace ProjectEulerDotNet.Problems
             return primes[primes.Count - 1];
         }
         /// <summary>
+        /// Largest Palindrome Product
+        /// Find the largest palindrome made from the product of two N-digit numbers
+        /// </summary>
+        /// <param name="N"></param>
+        /// <returns></returns>
+        public long Problem4(int N)
+        {
+            long num1 = 0;
+            List<long> Palindromes = new List<long>();
+            for(int i = 0; i < N; i++)
+            {
+                num1 += (9 * (long)(Math.Pow(10, i)));
+            }
+            while(num1 > 0)
+            {
+                long num2 = num1;
+                while(num2 > 0)
+                {
+                    if (IsPalindrome(num1 * num2))
+                        Palindromes.Add(num1*num2);
+                    num2--;
+                }
+                num1--;
+            }
+            return Palindromes.Max();
+        }
+        /// <summary>
+        /// Smallest Multiple
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public long Problem5(int limit)
+        {
+            long num = 1;
+            while (true)
+            {
+                for (int i = 1; i <= limit; i++)
+                {
+                    if (num % i != 0)
+                        break;
+                    if (i == limit)
+                        return num;
+                }
+                num++;
+            }
+        }
+        /// <summary>
+        /// Sum Square Difference
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public long Problem6(long nums)
+        {
+            long sumsquare = 0, squaresum = 0;
+            for(long i = 1; i <= nums; i++)
+            {
+                sumsquare += i * i;
+                squaresum += i;
+            }
+            squaresum *= squaresum;
+            return squaresum - sumsquare;
+        }
+        /// <summary>
+        /// Nth Prime
+        /// </summary>
+        /// <param name="N"></param>
+        /// <returns></returns>
+        public long Problem7(long N)
+        {
+            long x = 2;
+            while(N > 0)
+            {
+                bool isPrime = true;
+                x++;
+                for (long i = x - 1; i > 1; i--)
+                {
+                    if(x % i == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime)
+                    N--;
+                if (N == 1)
+                    return x;
+            }
+            return 0;
+        }
+
+
+
+
+
+        /// <summary>
         /// Recursive Fibonacci sequence
         /// </summary>
         /// <param name="num"></param>
@@ -83,6 +179,37 @@ namespace ProjectEulerDotNet.Problems
                 return num;
             }
             return Fibonacci(num - 1) + Fibonacci(num - 2);
+        }
+        /// <summary>
+        /// Checks if number is a palindrome number
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private bool IsPalindrome(long num)
+        {
+            long[] numbers;
+            if (num == 0)
+                return false;
+            else
+                numbers = ConvertToNumList(num).ToArray();
+            for(int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != numbers[numbers.Length - (i + 1)])
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Takes a long and converts it to a long Stack
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private Stack<long> ConvertToNumList(long num)
+        {
+            if (num == 0) return new Stack<long>();
+            var numbers = ConvertToNumList(num / 10);
+            numbers.Push(num % 10);
+            return numbers;
         }
     }
 }
