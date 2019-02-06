@@ -43,5 +43,11 @@ namespace ProjectEulerDotNet.Test
         {
             Assert.Equal(13, _p1_10.Problem7(6));
         }
+        [Fact]
+        public void Problem8()
+        {
+            Assert.Equal(5832, _p1_10.Problem8(4));
+        }
+
     }
 }
