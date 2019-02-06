@@ -145,22 +145,30 @@ namespace ProjectEulerDotNet.Problems
             long x = 2;
             while(N > 0)
             {
-                bool isPrime = true;
-                x++;
-                for (long i = x - 1; i > 1; i--)
-                {
-                    if(x % i == 0)
-                    {
-                        isPrime = false;
-                        break;
-                    }
-                }
-                if (isPrime)
+                x++;;
+                if (IsPrime(x))
                     N--;
                 if (N == 1)
                     return x;
             }
             return 0;
+        }
+
+        public bool IsPrime(long x)
+        {
+            long n = (long)Math.Floor(Math.Sqrt(x));
+
+            if (x == 1) return false;
+            if (x == 2) return true;
+            for (long i = 2; i <= n; ++i)
+            {
+                if (x % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public long Problem8(int adjNums)
@@ -183,6 +191,41 @@ namespace ProjectEulerDotNet.Problems
                     LargestMult = tempMult;
             }
             return LargestMult;
+        }
+
+        public long Problem9(int limit)
+        {
+            long a, b, c = 0;
+            long m = 2;
+            while(c < limit)
+            {
+                for(int n = 1; n < m; ++n)
+                {
+                    a = m * m - n * n;
+                    b = 2 * m * n;
+                    c = m * m + n * n;
+                    Console.WriteLine("a: " + a + ", b: " + b + ", c: " + c);
+                    if ((a + b + c) == limit)
+                        return a * b * c;
+
+                }
+                m++;
+            }
+            return 0;
+        }
+
+        public long Problem10(long limit)
+        {
+            long answer = 0;
+            for(int i = 2; i < limit; i++)
+            {
+                if (IsPrime(i))
+                {
+                    answer += i;
+                    Console.WriteLine(answer + " : " + i);
+                }
+            }
+            return answer;
         }
 
 
