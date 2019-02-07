@@ -8,6 +8,7 @@ namespace ProjectEulerDotNet.Answers
         static void Main(string[] args)
         {
             Problems1_10 p1_10 = new Problems1_10();
+            Problems11_19 p11_19 = new Problems11_19();
             //Console.WriteLine("Problem 1: " + p1_10.Problem1(1000));
             //Console.WriteLine("Problem 2: " + p1_10.Problem2(4000000));
             //Console.WriteLine("Problem 3: " + p1_10.Problem3(600851475143));
@@ -16,7 +17,8 @@ namespace ProjectEulerDotNet.Answers
             //Console.WriteLine("Problem 6: " + p1_10.Problem6(100));
             ////Console.WriteLine("Problem 7: " + p1_10.Problem7(10001));
             //Console.WriteLine("Problem 8: " + p1_10.Problem8(13));
-            Console.WriteLine("Problem 10: " + p1_10.Problem10(2000000));
+            //Console.WriteLine("Problem 10: " + p1_10.Problem10(2000000));
+            Console.WriteLine("Problem 11: " + p11_19.Problem11());
 
             Console.ReadLine();
         }
