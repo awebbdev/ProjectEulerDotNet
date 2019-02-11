@@ -85,15 +85,22 @@ namespace ProjectEulerDotNet.Problems
             return answer;
         }
 
-        public List<long> GetFactors(long num)
+        public long Problem12(int div)
         {
-            List<long> factors = new List<long>();
-            for(long i = 1; i <= num; i++)
+            int i = 1;
+            Dictionary<long, int> factors = new Dictionary<long, int>();
+            long tri;
+            while (true)
             {
-                if (num % i == 0)
-                    factors.Add(i);
+                tri = CalculateTriangle(i);
+                factors = PrimeFactors(tri);
+                int facts = NumFactors(factors);
+                if (facts >= div)
+                {
+                    return tri;
+                }
+                i++;
             }
-            return factors;
         }
 
         public long CalculateTriangle(int nth)
@@ -104,6 +111,33 @@ namespace ProjectEulerDotNet.Problems
                 answer += i;
             }
             return answer;
+        }
+
+        public Dictionary<long, int> PrimeFactors(long num)
+        {
+            long a;
+            Dictionary<long,int> retVal = new Dictionary<long, int>();
+            for(a = 2; num > 1; a++)
+            {
+                int x = 0;
+                while(num % a == 0)
+                {
+                    num /= a;
+                    x++;
+                }
+                if(x > 0)
+                    retVal.Add(a, x);
+            }
+            return retVal;
+        }
+        public int NumFactors(Dictionary<long, int> primes)
+        {
+            int retVal = 1;
+            foreach(var item in primes)
+            {
+                retVal *= item.Value + 1;
+            }
+            return retVal;
         }
     }
 }

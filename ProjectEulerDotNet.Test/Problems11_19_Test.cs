@@ -14,12 +14,27 @@ namespace ProjectEulerDotNet.Test
         {
             Assert.Equal(28, _p_11_19.CalculateTriangle(7));
         }
+        [Fact]
+        public void Prime_Factor_Test()
+        {
+            Dictionary<long, int> factors = new Dictionary<long, int>();
+            factors.Add(2, 2);
+            factors.Add(7, 2);
+            Assert.Equal(factors, _p_11_19.PrimeFactors(196));
+        }
+        [Fact]
+        public void Num_Factors_Test()
+        {
+            Dictionary<long, int> factors = new Dictionary<long, int>();
+            factors.Add(2, 2);
+            factors.Add(7, 2);
+            Assert.Equal(9, _p_11_19.NumFactors(factors));
+        }
 
         [Fact]
-        public void Factors_Test()
+        public void Problem12_Test()
         {
-            List<long> factors = new List<long> { 1, 2, 4, 7, 14, 28 };
-            Assert.Same(factors, _p_11_19.GetFactors(28));
+            Assert.Equal(28, _p_11_19.Problem12(5));
         }
     }
 }
