@@ -12,11 +12,11 @@ namespace ProjectEulerDotNet.Problems
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Repositories\awebbdev\ProjectEulerDotNet\ProjectEulerDotNet\DataSources\Problem11.txt");
             List<List<long>> grid = new List<List<long>>();
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 List<long> nums = line.Split(" ").Select(n => Convert.ToInt64(n)).ToList();
                 grid.Add(nums);
-            }            
+            }
             long answerRight = MultRight(grid);
             long answerDown = MultDown(grid);
             long answerRightDiag = MultRightDiag(grid);
@@ -28,11 +28,11 @@ namespace ProjectEulerDotNet.Problems
         public long MultRight(List<List<long>> grid)
         {
             long answer = 0;
-            for(int i = 0; i < grid.Count; i++)
+            for (int i = 0; i < grid.Count; i++)
             {
-                for(int j = 0; j < grid[i].Count - 3; j++)
+                for (int j = 0; j < grid[i].Count - 3; j++)
                 {
-                    long result = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+                    long result = grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3];
                     if (result > answer)
                         answer = result;
                 }
@@ -106,7 +106,7 @@ namespace ProjectEulerDotNet.Problems
         public long CalculateTriangle(int nth)
         {
             long answer = 0;
-            for(int i = 1; i <= nth; i++)
+            for (int i = 1; i <= nth; i++)
             {
                 answer += i;
             }
@@ -116,16 +116,16 @@ namespace ProjectEulerDotNet.Problems
         public Dictionary<long, int> PrimeFactors(long num)
         {
             long a;
-            Dictionary<long,int> retVal = new Dictionary<long, int>();
-            for(a = 2; num > 1; a++)
+            Dictionary<long, int> retVal = new Dictionary<long, int>();
+            for (a = 2; num > 1; a++)
             {
                 int x = 0;
-                while(num % a == 0)
+                while (num % a == 0)
                 {
                     num /= a;
                     x++;
                 }
-                if(x > 0)
+                if (x > 0)
                     retVal.Add(a, x);
             }
             return retVal;
@@ -133,11 +133,21 @@ namespace ProjectEulerDotNet.Problems
         public int NumFactors(Dictionary<long, int> primes)
         {
             int retVal = 1;
-            foreach(var item in primes)
+            foreach (var item in primes)
             {
                 retVal *= item.Value + 1;
             }
             return retVal;
+        }
+
+
+        public string Problem13()
+        {
+            return System.IO.File.ReadAllLines(@"C:\Repositories\awebbdev\ProjectEulerDotNet\ProjectEulerDotNet\DataSources\Problem13.txt")
+                                    .Select(System.Numerics.BigInteger.Parse)
+                                    .Aggregate((i1, i2) => i1 + i2)
+                                    .ToString()
+                                    .Substring(0, 10);
         }
     }
 }

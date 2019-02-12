@@ -18,8 +18,9 @@ namespace ProjectEulerDotNet.Answers
             ////Console.WriteLine("Problem 7: " + p1_10.Problem7(10001));
             //Console.WriteLine("Problem 8: " + p1_10.Problem8(13));
             //Console.WriteLine("Problem 10: " + p1_10.Problem10(2000000));
-            Console.WriteLine("Problem 11: " + p11_19.Problem11());
-            Console.WriteLine("Problem 12: " + p11_19.Problem12(500));
+            //Console.WriteLine("Problem 11: " + p11_19.Problem11());
+            //Console.WriteLine("Problem 12: " + p11_19.Problem12(500));
+            Console.WriteLine("Problem 13: " + p11_19.Problem13());
 
             Console.ReadLine();
         }
