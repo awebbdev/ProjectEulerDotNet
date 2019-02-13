@@ -149,5 +149,51 @@ namespace ProjectEulerDotNet.Problems
                                     .ToString()
                                     .Substring(0, 10);
         }
+
+        public long Problem14()
+        {
+            long x = 500000;
+            long y = 0;
+            long count = 0;
+            while(x < 1000000)
+            {
+                long c = CollatzCount(x);
+                if(count < c)
+                {
+                    count = c;
+                    y = x;
+                }
+                x++;
+            }
+            return y;
+        }
+
+        public long CollatzSequence(long x)
+        {
+            if(x % 2 == 0)
+            {
+                return x / 2;
+            }
+            else
+            {
+                return 3 * x + 1;
+            }
+        }
+
+        public long CollatzCount(long num)
+        {
+            long count = 1;
+            while (num != 1)
+            {
+                count++;
+                num = CollatzSequence(num);
+            }
+            return count;
+        }
+
+        public long Problem15(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -36,5 +36,20 @@ namespace ProjectEulerDotNet.Test
         {
             Assert.Equal(28, _p_11_19.Problem12(5));
         }
+        [Fact]
+        public void CollatzSequence_Even_Test()
+        {
+            Assert.Equal(8, _p_11_19.CollatzSequence(16));
+        }
+        [Fact]
+        public void CollatzSequence_Odd_Test()
+        {
+            Assert.Equal(40, _p_11_19.CollatzSequence(13));
+        }
+        [Fact]
+        public void CollatzCount_Test()
+        {
+            Assert.Equal(10, _p_11_19.CollatzCount(13));
+        }
     }
 }
