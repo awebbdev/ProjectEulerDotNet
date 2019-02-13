@@ -51,5 +51,10 @@ namespace ProjectEulerDotNet.Test
         {
             Assert.Equal(10, _p_11_19.CollatzCount(13));
         }
+        [Fact]
+        public void Problem15_Test()
+        {
+            Assert.Equal(6, _p_11_19.Problem15(2));
+        }
     }
 }

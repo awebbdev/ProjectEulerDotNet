@@ -191,9 +191,15 @@ namespace ProjectEulerDotNet.Problems
             return count;
         }
 
-        public long Problem15(int x, int y)
+        public long Problem15(int grid)
         {
-            throw new NotImplementedException();
+            long paths = 1;
+            for(int i = 0; i < grid; i++)
+            {
+                paths *= (2 * grid) - i;
+                paths /= i + 1;
+            }
+            return paths;
         }
     }
 }
