@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Linq;
+using System.Numerics;
 
 namespace ProjectEulerDotNet.Problems
 {
@@ -200,6 +201,174 @@ namespace ProjectEulerDotNet.Problems
                 paths /= i + 1;
             }
             return paths;
+        }
+        public long Problem16(int num, int pow)
+        {
+            BigInteger result = (BigInteger)Math.Pow(num, pow);
+            long answer = 0;
+            while(result >= 1)
+            {
+                answer += (long)(result % 10);
+                result /= 10;
+            }
+            return answer;
+        }
+        public long Problem17(int limit)
+        {
+            for(int x = 1; x <= limit; x++)
+            {
+                string word = IntToString(x);
+            }
+            return 0;
+        }
+
+        public string IntToString(int num)
+        {
+            string place = "";
+            string numWord = "";
+            bool isDone = false;
+            if(num > 0)
+            {
+                int numDigits = 0;
+                int pos = 0;
+                int tNum = num;
+                while(tNum >= 1)
+                {
+                    numDigits++;
+                    tNum /= 10;
+                }
+                switch (numDigits)
+                {
+                    case 1:
+                        numWord = ones(num);
+                        isDone = true;
+                        break;
+                    case 2:
+                        numWord = tens(num);
+                        isDone = true;
+                        break;
+                    case 3:
+                        pos = (numDigits % 3) + 1;
+                        place = " hundred ";
+                        break;
+                    case 4:
+                        pos = (numDigits % 4) + 1;
+                        place = " thousand ";
+                        break;
+                    default:
+                        isDone = true;
+                        break;
+                }
+                if (!isDone)
+                {
+                    return numWord;
+                }
+                return numWord;
+            }
+            return numWord;
+        }
+        public string ones(int num)
+        {
+            string name = "";
+            switch (num)
+            {
+                case 1:
+                    name = "one";
+                    break;
+                case 2:
+                    name = "two";
+                    break;
+                case 3:
+                    name = "three";
+                    break;
+                case 4:
+                    name = "four";
+                    break;
+                case 5:
+                    name = "five";
+                    break;
+                case 6:
+                    name = "six";
+                    break;
+                case 7:
+                    name = "seven";
+                    break;
+                case 8:
+                    name = "eight";
+                    break;
+                case 9:
+                    name = "nine";
+                    break;
+            }
+            return name;
+        }
+        public string tens(int num)
+        {
+            string name = null;
+            switch (num)
+            {
+                case 10:
+                    name = "ten";
+                    break;
+                case 11:
+                    name = "eleven";
+                    break;
+                case 12:
+                    name = "twelve";
+                    break;
+                case 13:
+                    name = "thirteen";
+                    break;
+                case 14:
+                    name = "fourteen";
+                    break;
+                case 15:
+                    name = "fifteen";
+                    break;
+                case 16:
+                    name = "sixteen";
+                    break;
+                case 17:
+                    name = "seventeen";
+                    break;
+                case 18:
+                    name = "eighteen";
+                    break;
+                case 19:
+                    name = "nineteen";
+                    break;
+                case 20:
+                    name = "twenty";
+                    break;
+                case 30:
+                    name = "thirty";
+                    break;
+                case 40:
+                    name = "fourty";
+                    break;
+                case 50:
+                    name = "fifty";
+                    break;
+                case 60:
+                    name = "sixty";
+                    break;
+                case 70:
+                    name = "seventy";
+                    break;
+                case 80:
+                    name = "eighty";
+                    break;
+                case 90:
+                    name = "ninety";
+                    break;
+                default:
+                    if (num > 0)
+                    {
+                        name = tens(num - (num%10)) + " " + ones(num);
+                    }
+                    break;
+            }
+            return name;
         }
     }
 }
