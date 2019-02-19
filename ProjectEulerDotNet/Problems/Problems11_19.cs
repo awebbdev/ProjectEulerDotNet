@@ -215,11 +215,20 @@ namespace ProjectEulerDotNet.Problems
         }
         public long Problem17(int limit)
         {
+            long answer = 0;
             for(int x = 1; x <= limit; x++)
             {
                 string word = IntToString(x);
+                answer += CountWord(word);
             }
-            return 0;
+            return answer;
+        }
+
+        public int CountWord(string word)
+        {
+            word = word.Trim().Replace(" ", string.Empty);
+            Console.WriteLine(word);
+            return word.Count();
         }
 
         public string IntToString(int num)
@@ -240,11 +249,11 @@ namespace ProjectEulerDotNet.Problems
                 switch (numDigits)
                 {
                     case 1:
-                        numWord = ones(num);
+                        numWord = Ones(num);
                         isDone = true;
                         break;
                     case 2:
-                        numWord = tens(num);
+                        numWord = Tens(num);
                         isDone = true;
                         break;
                     case 3:
@@ -261,13 +270,40 @@ namespace ProjectEulerDotNet.Problems
                 }
                 if (!isDone)
                 {
-                    return numWord;
+                    if (num.ToString().Substring(0, pos) != "0" && GetRest(num) == 0)
+                    {
+                        numWord = IntToString(GetFirstDigit(num)) + place + IntToString(GetRest(num));
+                    }
+                    else if (num.ToString().Substring(0, pos) != "0" && num.ToString().Substring(pos) != "0")
+                    {
+                        numWord = IntToString(GetFirstDigit(num)) + place + "and " + IntToString(GetRest(num));
+                    }
+                    else
+                    {
+                        numWord = IntToString(GetFirstDigit(num)) + IntToString(GetRest(num));
+                    }
                 }
                 return numWord;
             }
             return numWord;
         }
-        public string ones(int num)
+
+        public int GetFirstDigit(int i)
+        {
+            if (i >= 100000000) i /= 100000000;
+            if (i >= 10000) i /= 10000;
+            if (i >= 100) i /= 100;
+            if (i >= 10) i /= 10;
+            return i;
+        }
+        public int GetRest(int i)
+        {
+            if (i >= 1000) return i %= 1000;
+            if (i >= 100) return i %= 100;
+            if (i >= 10) return i %= 10;
+            return i;
+        }
+        public string Ones(int num)
         {
             string name = "";
             switch (num)
@@ -302,7 +338,7 @@ namespace ProjectEulerDotNet.Problems
             }
             return name;
         }
-        public string tens(int num)
+        public string Tens(int num)
         {
             string name = null;
             switch (num)
@@ -344,7 +380,7 @@ namespace ProjectEulerDotNet.Problems
                     name = "thirty";
                     break;
                 case 40:
-                    name = "fourty";
+                    name = "forty";
                     break;
                 case 50:
                     name = "fifty";
@@ -364,11 +400,31 @@ namespace ProjectEulerDotNet.Problems
                 default:
                     if (num > 0)
                     {
-                        name = tens(num - (num%10)) + " " + ones(num);
+                        name = Tens(num - (num%10)) + " " + Ones(num%10);
                     }
                     break;
             }
             return name;
         }
+
+        public long Problem18(string fileLoc)
+        {
+            List<List<int>> Pyramid = new List<List<int>>();
+            string[] lines = System.IO.File.ReadAllLines(fileLoc);
+            foreach(string line in lines)
+            {
+                List<int> layer = new List<int>();
+                foreach(var num in line.Split(" "))
+                {
+                    int number;
+                    if (int.TryParse(num, out number))
+                        layer.Add(number);
+                }
+                Pyramid.Add(layer);
+            }
+            return 0;
+        }
+
+
     }
 }

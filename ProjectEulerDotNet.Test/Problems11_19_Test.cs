@@ -62,5 +62,29 @@ namespace ProjectEulerDotNet.Test
         {
             Assert.Equal(26, _p_11_19.Problem16(2, 15));
         }
+        [Fact]
+        public void GetFirstDigit_Test()
+        {
+            Assert.Equal(1, _p_11_19.GetFirstDigit(1000));
+        }
+        [Fact]
+        public void GetRestof_Test()
+        {
+            Assert.Equal(789, _p_11_19.GetRest(1789));
+        }
+        [Fact]
+        public void CountWord_Test()
+        {
+            Assert.Equal(23, _p_11_19.CountWord("three hundred and forty two"));
+            Assert.Equal(20, _p_11_19.CountWord("one hundred and fifteen"));
+        }
+        [Fact]
+        public void Problem17_Test()
+        {
+            Assert.Equal(19, _p_11_19.Problem17(5));
+            Assert.Equal(36, _p_11_19.Problem17(9));
+            Assert.Equal(106, _p_11_19.Problem17(19));
+            Assert.Equal(854, _p_11_19.Problem17(99));
+        }
     }
 }
